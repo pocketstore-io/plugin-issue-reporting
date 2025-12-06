@@ -7,11 +7,16 @@
 import {useLocalStorage} from "@vueuse/core";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
+const props = defineProps({
+  host: {type:String, required:true},
+  vendor: {type:String, required:true},
+  name: {type:String, required:true},
+});
 const open = useLocalStorage('modal-bug-reporting', false);
 
 const toggle = () => {
-  if(!open.value)
-    location.href = 'https://github.com/pocketstore-io/demo/issues/new';
+  if (!open.value)
+    window.open('https://'+props.host+'/'+props.vendor+'/'+props.name+'/issues/new', '_blank');
   open.value = !open.value;
 }
 
