@@ -12,15 +12,8 @@ const props = defineProps({
   vendor: {type:String, required:true},
   name: {type:String, required:true},
 });
-const open = useLocalStorage('modal-bug-reporting', false);
 
 const toggle = () => {
-  if (!open.value)
     window.open('https://'+props.host+'/'+props.vendor+'/'+props.name+'/issues/new', '_blank');
-  open.value = !open.value;
 }
-
-onMounted(() => {
-  open.value = false;
-});
 </script>
